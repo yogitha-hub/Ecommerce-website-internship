@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>E‑Commerce | Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <strong>E‑Commerce</strong>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="category.html">Category</a>
+            <a href="cart.html">Cart</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="search.html">Search</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h1>Welcome to Our Store</h1>
+            <p>Shop the latest products at the best prices—fast, simple, and secure.</p>
+        </section>
+
+        <h3 class="section-title">Shop by Category</h3>
+        <div class="grid">
+            <div class="card">
+                <h3>Electronics</h3>
+                <p>Headphones, watches, and more.</p>
+                <a class="btn" href="products.html" onclick="localStorage.setItem('categoryFilter','Electronics')">Browse</a>
+            </div>
+            <div class="card">
+                <h3>Fashion</h3>
+                <p>Apparel and footwear.</p>
+                <a class="btn" href="products.html" onclick="localStorage.setItem('categoryFilter','Fashion')">Browse</a>
+            </div>
+            <div class="card">
+                <h3>Books</h3>
+                <p>Learn and grow.</p>
+                <a class="btn" href="products.html" onclick="localStorage.setItem('categoryFilter','Books')">Browse</a>
+            </div>
+        </div>
+
+        <h3 class="section-title">Latest Products</h3>
+        <div id="latest" class="grid"></div>
+    </div>
+
+    <button id="scroll-top" class="scroll-top">↑</button>
+
+    <footer class="footer">
+        © 2025 Internship Studio E‑Commerce Project
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const latest = document.getElementById('latest');
+            latest.innerHTML = PRODUCTS.slice(0, 4).map(p => `
+        <div class="card">
+          <img src="${p.img}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <div class="price">₹${p.price}</div>
+          <div class="rating">★ ${p.rating}</div>
+          <div style="margin-top:8px; display:flex; gap:8px;">
+            <a class="btn" href="product-view.html" onclick="setProductView(${p.id})">View</a>
+            <button class="btn success" onclick="addToCart(${p.id})">Add to Cart</button>
+          </div>
+        </div>
+      `).join('');
+        });
+    </script>
+</body>
+
+</html>

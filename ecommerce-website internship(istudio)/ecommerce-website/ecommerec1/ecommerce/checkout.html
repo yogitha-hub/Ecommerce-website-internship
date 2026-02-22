@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <strong>E‑Commerce</strong>
+            <a href="cart.html">Cart</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Checkout</h2>
+
+        <h3 class="section-title">Order Summary</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="summary-items"></tbody>
+        </table>
+        <p style="margin-top:8px;"><strong>Total:</strong> <span id="summary-total">₹0</span></p>
+
+        <h3 class="section-title">Shipping Information</h3>
+        <div class="form">
+            <div class="row">
+                <div>
+                    <label>Full Name</label>
+                    <input id="ship-name" type="text" placeholder="Your name">
+                </div>
+                <div>
+                    <label>Phone</label>
+                    <input id="ship-phone" type="text" placeholder="10‑digit phone">
+                </div>
+            </div>
+            <label>Address</label>
+            <input id="ship-address" type="text" placeholder="Street, area">
+            <div class="row">
+                <div>
+                    <label>City</label>
+                    <input id="ship-city" type="text" placeholder="City">
+                </div>
+                <div>
+                    <label>PIN Code</label>
+                    <input id="ship-pin" type="text" placeholder="6‑digit PIN">
+                </div>
+            </div>
+            <button class="btn success" style="margin-top:12px;" onclick="placeOrder()">Place Order</button>
+        </div>
+    </div>
+
+    <footer class="footer">© 2025 Internship Studio</footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cart = getCart();
+            const tbody = document.getElementById('summary-items');
+            const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+            tbody.innerHTML = cart.map(i => `
+        <tr><td>${i.name}</td><td>${i.qty}</td><td>₹${i.price * i.qty}</td></tr>
+      `).join('') || '<tr><td colspan="3">No items in cart.</td></tr>';
+            document.getElementById('summary-total').textContent = `₹${total}`;
+        });
+    </script>
+</body>
+
+</html>

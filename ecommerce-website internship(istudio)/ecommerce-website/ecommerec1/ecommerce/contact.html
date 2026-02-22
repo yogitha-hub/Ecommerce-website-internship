@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <strong>E‑Commerce</strong>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="card">
+            <p><strong>Email:</strong> support@example.com</p>
+            <p><strong>Phone:</strong> +91‑90000‑00000</p>
+            <p><strong>Address:</strong> Hyderabad, Telangana</p>
+        </div>
+
+        <h3 class="section-title">Send a Message</h3>
+        <form class="form" id="contact-form">
+            <label>Name</label>
+            <input id="c-name" type="text" placeholder="Your name">
+            <label>Email</label>
+            <input id="c-email" type="email" placeholder="you@example.com">
+            <label>Message</label>
+            <textarea id="c-message" placeholder="Write your message"></textarea>
+            <button class="btn success" style="margin-top:12px;">Submit</button>
+        </form>
+    </div>
+
+    <footer class="footer">© 2025 Internship Studio</footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', validateContactForm);
+    </script>
+</body>
+
+</html>
